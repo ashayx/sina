@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>sina</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="full-screen" content="true" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+    <!-- <script id="_wxComJsApiJs" src="http://h1v.cn/WxCom/js/jsapi.js"></script> -->
+
+    <!-- <script src="http://h5.sjzzimu.com/zimuWx/js/jquery.js"></script> -->
+    <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/ecmascript" src="http://am67.qiniudn.com/js/sha1.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="./resource/js/WxV2.0.js"></script>
+    <script>
+
+    </script>
+    <style>
+        html,
+        body {
+            -ms-touch-action: none;
+            background: #ffffff;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        .bgm {
+            position: absolute;
+            z-index: 100;
+            top: 5px;
+            left: 5px;
+
+            width: 1.5rem;
+            height: 1.5rem;
+            margin: 0;
+
+            animation: rotateArrow 5s infinite linear;
+
+            background-image: url('./resource/musicon.png');
+            background-size: 100% 100%;
+        }
+
+        @keyframes rotateArrow {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin: auto;width: 100%;height: 100%;" class="egret-player" data-entry-class="Main" data-orientation="auto"
+        data-scale-mode="fixedWidth" data-frame-rate="30" data-content-width="640" data-content-height="1009" data-show-paint-rect="false"
+        data-multi-fingered="2" data-show-fps="false" data-show-log="false" data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
+    </div>
+    <!-- <div id="music" class="bgm">
+        <audio id="aud" src='./resource/bgm.mp3' autoplay="autoplay" loop="loop"></audio>
+    </div> -->
+    <script>
+
+        var answerObj = {
+            isAnswer: false,
+            score: 0
+        }
+        var isShareLink = false
+        var myHeadimgurl = 'http://h5.sjzzimu.com/weixinUpload/upload/59ec372f-3ec0-4698-acdd-f7957ceeaf7e.png'
+        var myNickname = '默认用户'
+        var searchRankList = true
+        var questionArray = []
+        var answerArray = []
+        var CODE = 0
+        var openidUser = null    // 用户openid
+        var openidshare = null  // 分享里的openid
+        var shareId = null
+
+        // 正则
+        var getUrlParam = function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+
+        openidshare = getUrlParam('openid')
+        // alert(openidshare)
+        shareId = getUrlParam('id')
+        // alert(shareId)
+
+
+        // openidUser = "用户4"
+        // openidshare = '用户1'  // 分享里的openid
+        // shareId = 8
+
+
+        // 查询排行榜
+        var searchRankListDate = function (whoId) {
+            // 查询排行榜数据
+            // alert('查询排行榜')
+            $.ajax({
+                url: 'http://h5.sjzzimu.com/sinaAnswer/ShowList/queryShowListInfoUseOpenidShare.do',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    openidshare: whoId
+                },
+                success: function (data) {
+                    // if (data.showList.length === 0) {
+                    //     searchRankList = false
+                    // }
+                    // alert('排行榜'+ data.showList.length)
+                    for (var i = 0; i < data.showList.length; i++) {
+                        var e = data.showList[i];
+                        if (e.openidshow == openidUser) {
+                            answerObj.isAnswer = true
+                            answerObj.score = e.questionnum
+                            console.log('排行榜上有，拿分数')
+                            // alert('排行榜上有' + e.nickname)
+                        }
+
+                    }
+                }
+            })
+        }
+        // 获取问题答案 id
+        /* var getQuestionAndAnswer = function (id) {
+            // alert('查询问题答案')
+            $.ajax({
+                url: 'http://h5.sjzzimu.com/sinaAnswer/answer/queryShowswitchUseId.do',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    id: id
+                },
+                success: (data) => {
+                    console.log('获取问题答案', data)
+                    if (data.question) {
+                        let q = data.question.split(',')
+                        let a = data.answer.split(',')
+                        questionArray = q
+                        answerArray = a
+                    }
+                    CODE = data.Code
+                    // alert('最新 ',CODE);
+                }
+            })
+        } */
+        var getQuestionAndAnswer = function () {
+            // alert('查询问题答案')
+            $.ajax({
+                url: 'http://h5.sjzzimu.com/sinaAnswer/answer/queryAnswerInfoUseOpenid.do',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    openid: openidshare
+                },
+                success: (data) => {
+                    console.log('获取问题答案', data)
+                    if (data.question) {
+                        let q = data.question.split(',')
+                        let a = data.answer.split(',')
+                        questionArray = q
+                        answerArray = a
+                    }
+                    // CODE = data.Code
+                    // alert('最新 ',CODE);
+                }
+            })
+        }
+        // 查询答没答过
+        var searchIsAnswer = function () {        
+            // $.ajax({
+            //         url: 'http://h5.sjzzimu.com/sinaAnswer/ShowList/queryAnswerIdUseOpenidShowAndAnswerId.do',
+            //         type: 'post',
+            //         dataType: 'json',
+            //         data: {
+            //             openidshow: openidUser,
+            //             score: shareId
+            //         },
+            //         success: function (data) {
+            //             CODE = data.code
+            //             console.log('是否答过',data);
+
+            //             startGame()
+            //             //没回答过
+            //             if (!CODE) {
+            //                 getQuestionAndAnswer()
+            //             }
+            //         }
+            //     });
+             $.ajax({
+                url: 'http://h5.sjzzimu.com/sinaAnswer/answer/queryAnswerIdInfo.do',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    openid: openidUser,
+                    answerid: shareId
+                },
+                success: function (data) {
+                    console.log(data.code)
+                    CODE = data.code
+                    console.log('是否答过',data);
+
+                    startGame()
+                    //没回答过
+                    if (!CODE) {
+                        getQuestionAndAnswer()
+                    }
+                }
+            });
+        }
+        // 查询头像昵称
+        var searchPhoto = function (openid, nickname, url) {
+            $.ajax({
+                url: 'http://h5.sjzzimu.com/sinaAnswer/user/firstQuery.do',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    openid: openid
+                },
+                success: function (data) {
+                    console.log('查询头像', data);
+                    if (!data.code) {
+                        // 传入数据到服务器
+                        // addPhotoToServer(openid, nickname, url)
+                        createUrl(openid, nickname, url)
+                    } else {
+                        myHeadimgurl = data.headimgurl
+                    }
+                }
+            })
+        }
+        // 生成头像新的地址
+        var createUrl = function (openid, nickname, url) {
+
+            $.ajax({
+                url: 'http://h5.sjzzimu.com/weixinUpload/wxHeadimgUpload.action',
+                data: {
+                    urlStr: url
+                },
+                type: 'POST',
+                success: (data) => {
+                    console.log(data)
+                    var newRrl = data
+                    myHeadimgurl = data
+                    addPhotoToServer(openid, nickname, newRrl)
+                }
+            })
+
+        }
+        // 添加信息到服务器
+        var addPhotoToServer = function (openid, nickname, url) {
+
+            $.ajax({
+                url: 'http://h5.sjzzimu.com/sinaAnswer/user/firstAdd.do',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    openid: openid,
+                    nickname: nickname,
+                    headimgurl: url
+                },
+                success: function (data) {
+                    console.log(data);
+                    console.log(data.code);
+                    console.log(data.msg);
+                }
+            });
+        }
+
+        var loadScript = function (list, callback) {
+            var loaded = 0;
+            var loadNext = function () {
+                loadSingleScript(list[loaded], function () {
+                    loaded++;
+                    if (loaded >= list.length) {
+                        callback();
+                    }
+                    else {
+                        loadNext();
+                    }
+                })
+            };
+            loadNext();
+        }
+
+        var loadSingleScript = function (src, callback) {
+            var s = document.createElement('script');
+            s.async = false;
+            s.src = src;
+            s.addEventListener('load', function () {
+                s.parentNode.removeChild(s);
+                s.removeEventListener('load', arguments.callee, false);
+                callback();
+            }, false);
+            document.body.appendChild(s);
+        }
+        var startGame = function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', './manifest.json?v=' + Math.random(), true);
+            xhr.addEventListener("load", function () {
+                var manifest = JSON.parse(xhr.response);
+                var list = manifest.initial.concat(manifest.game);
+                loadScript(list, function () {
+                    /**
+                     * {
+                     * "renderMode":, //Engine rendering mode, "canvas" or "webgl"
+                     * "audioType": 0 //Use the audio type, 0: default, 2: web audio, 3: audio
+                     * "antialias": //Whether the anti-aliasing is enabled in WebGL mode, true: on, false: off, defaults to false
+                     * "canvasScaleFactor": //canvas scale factor
+                     * }
+                     **/
+                    egret.runEgret({ renderMode: "webgl", audioType: 0 });
+                });
+            });
+            xhr.send(null);
+        }
+        yundaoWx.scope = "snsapi_userinfo";
+
+        var debug = false
+        if(debug) {
+                openidUser = "终结2"
+                openidshare = '终结1'  // 分享里的openid
+                shareId = 79
+
+                // 查询头像等信息
+                searchPhoto(openidUser, myNickname, myHeadimgurl)
+                // 获取题和答案
+                if (openidshare && shareId) {
+                    isShareLink = true
+                    // alert('分享链接')
+                    // 判断回答过没
+                    searchIsAnswer()
+                    searchRankListDate(openidshare)   
+                } else {
+                    // alert('原链接')
+                    isShareLink = false
+                    startGame()
+                }
+                
+                
+        }else {
+
+            yundaoWx.OAuth(function (data) {
+    
+                openidUser = data.openid
+                // alert('授权openid   '+openidUser)
+                myNickname = data.nickname
+                myHeadimgurl = data.headimgurl
+    
+                yundaoWx.share_title = "竟然真的有读心术，惊呆了个我了······";
+                yundaoWx.share_desc = "谁能读懂我内心跳动的吸，谁能猜透我内心深处的魂";
+                yundaoWx.share_link = "http://h5.sjzzimu.com/171105202512/index.html";
+                yundaoWx.share_imgUrl = "http://h5.sjzzimu.com/171105202512/resource/share.png";
+                yundaoWx.share();
+    
+                // 查询头像等信息
+                searchPhoto(openidUser, myNickname, myHeadimgurl)
+                // 获取题和答案
+                if (openidshare && shareId) {
+                    isShareLink = true
+                    // alert('分享链接')
+                    // 判断回答过没
+                    searchIsAnswer()
+                    searchRankListDate(openidshare)
+                } else {
+                    // alert('原链接')
+                    isShareLink = false
+                    startGame()
+                }
+            });
+        }
+
+        yundaoWx.ready = function () {
+            
+        }
+
+        
+
+    </script>
+</body>
+
+</html>

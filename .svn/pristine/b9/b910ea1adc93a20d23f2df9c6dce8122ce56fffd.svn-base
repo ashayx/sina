@@ -1,0 +1,57 @@
+class PageTwo extends Page {
+    init() {
+        let bg = this.createBitmap('p2.bg')
+        bg.width = W
+        bg.height = H
+        this.addChild(bg)
+
+        let msg1 = this.createBitmap('p2.1')
+        msg1.y = 10
+        this.addChild(msg1)
+        let msg2 = this.createBitmap('p2.2')
+        msg2.y = msg1.height + msg1.y
+        this.addChild(msg2)
+        let msg3 = this.createBitmap('p2.3')
+        msg3.y = msg2.height + msg2.y
+        this.addChild(msg3)
+        let msg4 = this.createBitmap('p2.4')
+        msg4.y = msg3.height + msg3.y
+        this.addChild(msg4)
+        let msg5 = this.createBitmap('p2.5')
+        msg5.y = msg4.height + msg4.y
+        this.addChild(msg5)
+
+        let msg6 = this.createBitmap('p2.6')
+        msg6.y = msg5.height + msg5.y
+        this.addChild(msg6)
+
+        let msg8 = this.createBitmap('p2.8')
+        msg8.x = msg6.width
+        msg8.y = msg6.y
+
+        let msg7 = this.createBitmap('p2.7')
+        msg7.y = msg6.height + msg6.y
+        this.addChild(msg8)
+        this.addChild(msg7)
+        
+        
+        for (let i = 0; i < this.numChildren; i++) {
+            let p: egret.Bitmap = <egret.Bitmap>this.getChildAt(i);
+            egret.Tween.get(p)
+                .to({ alpha: 0 }, 0 )
+                .wait(300 * i)
+                .to( {alpha: 1}, 300 )
+            
+        }
+
+
+        bg.touchEnabled = true
+        bg.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+            this.changePage(new PageThree())
+        },this)
+
+        
+
+        
+    }
+}

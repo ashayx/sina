@@ -1,0 +1,15 @@
+{"file":"p3.png","frames":{
+"star2":{"x":920,"y":0,"w":33,"h":41,"offX":2,"offY":0,"sourceW":45,"sourceH":41},
+"top":{"x":0,"y":615,"w":251,"h":85,"offX":0,"offY":0,"sourceW":251,"sourceH":85},
+"woman1":{"x":576,"y":0,"w":289,"h":278,"offX":0,"offY":0,"sourceW":289,"sourceH":278},
+"woman2":{"x":576,"y":282,"w":291,"h":231,"offX":0,"offY":0,"sourceW":291,"sourceH":231},
+"xian":{"x":746,"y":630,"w":229,"h":12,"offX":0,"offY":0,"sourceW":229,"sourceH":12},
+"xian2":{"x":869,"y":50,"w":114,"h":13,"offX":0,"offY":0,"sourceW":114,"sourceH":13},
+"xin":{"x":869,"y":0,"w":47,"h":46,"offX":0,"offY":0,"sourceW":47,"sourceH":46},
+"yan":{"x":957,"y":0,"w":26,"h":19,"offX":0,"offY":0,"sourceW":26,"sourceH":19},
+"a1":{"x":486,"y":517,"w":256,"h":110,"offX":0,"offY":0,"sourceW":256,"sourceH":110},
+"a2":{"x":746,"y":517,"w":254,"h":109,"offX":0,"offY":0,"sourceW":254,"sourceH":109},
+"box":{"x":0,"y":0,"w":572,"h":305,"offX":0,"offY":0,"sourceW":572,"sourceH":305},
+"q1":{"x":0,"y":489,"w":482,"h":122,"offX":0,"offY":0,"sourceW":482,"sourceH":122},
+"q2":{"x":0,"y":309,"w":545,"h":176,"offX":0,"offY":0,"sourceW":545,"sourceH":176},
+"star1":{"x":987,"y":0,"w":17,"h":25,"offX":0,"offY":0,"sourceW":17,"sourceH":25}}}

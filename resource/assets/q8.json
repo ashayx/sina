@@ -1,0 +1,8 @@
+{"file":"q8.png","frames":{
+"q":{"x":0,"y":0,"w":489,"h":52,"offX":0,"offY":1,"sourceW":489,"sourceH":55},
+"s_1":{"x":0,"y":56,"w":224,"h":30,"offX":2,"offY":40,"sourceW":489,"sourceH":104},
+"s_2":{"x":224,"y":90,"w":220,"h":30,"offX":4,"offY":33,"sourceW":489,"sourceH":104},
+"s_3":{"x":0,"y":124,"w":158,"h":30,"offX":3,"offY":26,"sourceW":489,"sourceH":104},
+"a_1":{"x":228,"y":56,"w":224,"h":30,"offX":2,"offY":40,"sourceW":489,"sourceH":104},
+"a_2":{"x":0,"y":90,"w":220,"h":30,"offX":4,"offY":33,"sourceW":489,"sourceH":104},
+"a_3":{"x":0,"y":158,"w":158,"h":30,"offX":3,"offY":26,"sourceW":489,"sourceH":104}}}

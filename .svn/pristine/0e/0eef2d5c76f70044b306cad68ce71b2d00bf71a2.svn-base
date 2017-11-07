@@ -1,0 +1,192 @@
+class WelcomePage extends Page {
+
+    init(): void {
+        let bg = this.createBitmap('welcome.bg')
+        bg.width = W
+        bg.height = H
+        this.addChild(bg)
+
+        let du = this.createBitmap('welcome.du',true)
+        let xin = this.createBitmap('welcome.xin',true)
+        let shu = this.createBitmap('welcome.shu',true)
+        du.y = xin.y = shu.y = H * .12
+        du.alpha = xin.alpha = shu.alpha = 0
+        xin.x = .5 * W
+        du.x = xin.x - du.width
+        shu.x = xin.x + shu.width
+
+        egret.Tween.get(du).call(()=>{
+                this.createAni(du)
+            }).wait(800).call(() => {
+                this.createAni(xin)
+            }).wait(800).call(() => {
+                this.createAni(shu)
+            })
+        
+        
+
+        let title = this.createBitmap('welcome.title',true)
+        title.x = W * .5
+        title.y = du.y + du.height/2 + 20 + title.height / 2
+        title.alpha = 0
+
+        egret.Tween.get(title)
+            .wait(1800)
+            .to({ scaleX: 0, scaleY: 0, alpha: 0 }, 0)
+            .to({ scaleX: 1, scaleY: 1, alpha: 1}, 800, egret.Ease.backInOut)
+
+        let questionTop = this.createBitmap('welcome.questiontop', true)
+        questionTop.alpha = 0
+        questionTop.x = W * .55
+        questionTop.y = title.y + title.height / 2 + 60
+
+        egret.Tween.get(questionTop)
+            .to({ scaleX: 0, scaleY: 0, alpha: 0, x: W }, 0)
+            .wait(2500)
+            .to({ scaleX: 1, scaleY: 1, alpha: 1, x: W * .55 }, 800, egret.Ease.backInOut)
+
+        let questionDown = this.createBitmap('welcome.questiondown', true)
+        questionDown.alpha = 0
+        questionDown.x = W * .45
+        questionDown.y = questionTop.y + questionTop.height /2 + 40
+
+        egret.Tween.get(questionDown)
+            .to({ scaleX: 0, scaleY: 0, alpha: 0, x: - questionDown.width }, 0)
+            .wait(3000)
+            .to({ scaleX: 1, scaleY: 1, alpha: 1, x: W * .45 }, 800, egret.Ease.backInOut)
+
+
+        let msgLeft = this.createBitmap('welcome.msgleft',true)
+        msgLeft.x = W * .15
+        msgLeft.y = H * .53
+
+        egret.Tween.get(msgLeft)
+            .to({ alpha: 0, x: - msgLeft.width,scaleX:0.1, scaleY:0.1 }, 0)
+            .wait(3500)
+            .to({ alpha: 1, x: W * .15, scaleX: 2, scaleY: 2}, 800, egret.Ease.backInOut)
+            .to({ scaleX: 1, scaleY: 1 }, 300, egret.Ease.backInOut)
+
+        let msgRight = this.createBitmap('welcome.msgright' ,true)
+        msgRight.x = W * .78
+        msgRight.y = H * .7
+
+        egret.Tween.get(msgRight)
+            .to({ alpha: 0, x: W, scaleX: 0.1, scaleY: 0.1}, 0)
+            .wait(3800)
+            .to({ alpha: 1, x: W * .78, scaleX: 2, scaleY: 2}, 800, egret.Ease.backInOut)
+            .to({ scaleX: 1, scaleY: 1 }, 300, egret.Ease.backInOut)
+        
+        let btn = this.createBtn('welcome.button',()=>{
+            btn.touchEnabled = true
+            this.changePage(new PageTwo())
+            log('dian')
+        })
+        btn.x = W * .5
+        btn.y = H * .95 - 10
+
+        egret.Tween.get(btn)
+            .to({ scaleX: 0, scaleY: 0, alpha: 0 }, 0)
+            .wait(5000)
+            .to({ scaleX: 1, scaleY: 1, alpha: 1 }, 800, egret.Ease.backInOut)
+
+        let btnstar = this.createBtn('welcome.star', () => {
+            btn.touchEnabled = true
+            this.changePage(new PageTwo())
+            log('dian')
+        })
+        btnstar.x = W * .5 - btnstar.width / 2 - 30
+        btnstar.y = H * .92 - 60
+
+        egret.Tween.get(btnstar)
+            .to({ scaleX: 0, scaleY: 0, alpha: 0 }, 0)
+            .wait(4200)
+            .to({ scaleX: 1, scaleY: 1, alpha: 1 }, 800, egret.Ease.backInOut)
+
+        let btnseacrh = this.createBtn('welcome.search', () => {
+            btn.touchEnabled = true
+            // if (searchRankList) {
+            //     this.changePage(new RankList(6,openidUser))
+            // }else {
+            //     alert('还没有人答题')
+            // }
+            
+            $.ajax({
+                url: 'http://h5.sjzzimu.com/sinaAnswer/ShowList/queryShowListInfoUseOpenidShare.do',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    openidshare: openidUser
+                },
+                success: (data)=> {
+                    if (data.showList.length === 0) {
+                        searchRankList = false
+                        alert('还没有人答题')
+                    }else {
+                        this.changePage(new RankList(8, openidUser))
+                    }   
+                }
+            })
+ 
+        })
+        btnseacrh.x = W * .5 + btnseacrh.width / 2  + 30
+        btnseacrh.y = H * .92 - 60
+
+        egret.Tween.get(btnseacrh)
+            .to({ scaleX: 0, scaleY: 0, alpha: 0 }, 0)
+            .wait(4600)
+            .to({ scaleX: 1, scaleY: 1, alpha: 1 }, 800, egret.Ease.backInOut)
+
+
+        // 骨骼动画
+        let dragonbonesData = RES.getRes("man_ske.json")
+        let textureData = RES.getRes("man_tex.json")
+        let texture = RES.getRes("man_tex.png")
+
+        let egretFactory: dragonBones.EgretFactory = dragonBones.EgretFactory.factory
+        egretFactory.parseDragonBonesData(dragonbonesData)
+        egretFactory.parseTextureAtlasData(textureData, texture)
+
+        let armatureDisplay: dragonBones.EgretArmatureDisplay = egretFactory.buildArmatureDisplay("Armature")
+        armatureDisplay.alpha = 0
+       
+ 
+        armatureDisplay.x = W * .46
+        armatureDisplay.y = questionDown.y + 70 + armatureDisplay.width / 2
+        armatureDisplay.scaleX = armatureDisplay.scaleY = .8
+
+
+        egret.Tween.get(armatureDisplay).wait(5000).to( { alpha: 1 },200).call(()=>{
+            armatureDisplay.animation.play("look", 0)
+        })
+
+        this.addChild(du)
+        this.addChild(xin)
+        this.addChild(shu)
+        this.addChild(title)
+        this.addChild(questionTop)
+        this.addChild(questionDown)
+        this.addChild(armatureDisplay)
+        this.addChild(msgRight)
+        this.addChild(msgLeft)
+        this.addChild(btnstar)
+        this.addChild(btnseacrh)
+        this.addChild(btn)
+        
+    }
+    private createAni(name: egret.Bitmap) {
+        egret.Tween.get(name)
+            .to({ scaleX: 0, scaleY: 0, alpha: 0, y: - H * .12 }, 0)
+            .to({ scaleX: .2, scaleY: .2, alpha: 1, y: H * .12 }, 200, egret.Ease.circInOut)
+            .to({ scaleX: 1, scaleY: 1, alpha: 1, y: H * .12 }, 200, egret.Ease.circInOut)
+            .to({ scaleX: .9, scaleY: .9, alpha: 1, y: H * .12 - 10 }, 200, egret.Ease.backInOut)
+            .to({ scaleX: 1, scaleY: 1, alpha: 1, y: H * .12 }, 200, egret.Ease.backInOut)
+            .call(()=>{
+                playSound("yinxiao", 1);
+            })
+            .to({ rotation: 20 }, 100)
+            .to({ rotation: 10 }, 100)
+            .to({ rotation: 0 }, 100)
+            .to({ rotation: -10 }, 100)
+            .to({ rotation: 0 }, 100)
+    }
+}

@@ -1,0 +1,33 @@
+{
+	"initial": [
+		"libs/modules/egret/egret.js",
+		"libs/modules/egret/egret.web.js",
+		"libs/modules/game/game.js",
+		"libs/modules/tween/tween.js",
+		"libs/modules/res/res.js",
+		"libs/modules/dragonBones/dragonBones.js",
+		"promise/bin/promise.js"
+	],
+	"game": [
+		"bin-debug/base/Page.js",
+		"bin-debug/Question.js",
+		"bin-debug/Dragon.js",
+		"bin-debug/PageAnswer.js",
+		"bin-debug/PageEnd.js",
+		"bin-debug/PageFive.js",
+		"bin-debug/PageFour.js",
+		"bin-debug/PageQuestion.js",
+		"bin-debug/PageStart.js",
+		"bin-debug/PageThree.js",
+		"bin-debug/PageTwo.js",
+		"bin-debug/paihang.js",
+		"bin-debug/base/Timer.js",
+		"bin-debug/Rank.js",
+		"bin-debug/RankList.js",
+		"bin-debug/welcome.js",
+		"bin-debug/base/CommonUtil.js",
+		"bin-debug/base/EUtil.js",
+		"bin-debug/Main.js",
+		"bin-debug/LoadingUI.js"
+	]
+}

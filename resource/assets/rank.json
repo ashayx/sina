@@ -1,0 +1,9 @@
+{"file":"rank.png","frames":{
+"btn":{"x":612,"y":0,"w":249,"h":97,"offX":7,"offY":0,"sourceW":256,"sourceH":97},
+"msg":{"x":0,"y":1013,"w":438,"h":227,"offX":37,"offY":22,"sourceW":537,"sourceH":249},
+"no1":{"x":865,"y":0,"w":54,"h":77,"offX":0,"offY":0,"sourceW":54,"sourceH":77},
+"no2":{"x":957,"y":0,"w":54,"h":78,"offX":0,"offY":0,"sourceW":54,"sourceH":78},
+"no3":{"x":957,"y":82,"w":54,"h":77,"offX":0,"offY":0,"sourceW":54,"sourceH":77},
+"title":{"x":612,"y":101,"w":341,"h":48,"offX":9,"offY":1,"sourceW":360,"sourceH":56},
+"bg":{"x":0,"y":0,"w":608,"h":1009,"offX":0,"offY":0,"sourceW":608,"sourceH":1009},
+"box":{"x":442,"y":1013,"w":564,"h":104,"offX":0,"offY":0,"sourceW":564,"sourceH":104}}}

@@ -1,0 +1,13 @@
+{"file":"welcome.png","frames":{
+"shu":{"x":809,"y":220,"w":133,"h":130,"offX":0,"offY":0,"sourceW":133,"sourceH":130},
+"star":{"x":644,"y":80,"w":241,"h":76,"offX":0,"offY":0,"sourceW":241,"sourceH":76},
+"title":{"x":0,"y":1013,"w":387,"h":74,"offX":0,"offY":0,"sourceW":387,"sourceH":74},
+"xin":{"x":644,"y":160,"w":135,"h":127,"offX":0,"offY":0,"sourceW":135,"sourceH":127},
+"bg":{"x":0,"y":0,"w":640,"h":1009,"offX":0,"offY":0,"sourceW":640,"sourceH":1009},
+"button":{"x":644,"y":354,"w":260,"h":45,"offX":0,"offY":0,"sourceW":260,"sourceH":45},
+"du":{"x":889,"y":80,"w":131,"h":136,"offX":0,"offY":0,"sourceW":131,"sourceH":136},
+"msgleft":{"x":644,"y":403,"w":125,"h":65,"offX":0,"offY":0,"sourceW":125,"sourceH":65},
+"msgright":{"x":809,"y":403,"w":155,"h":61,"offX":0,"offY":0,"sourceW":157,"sourceH":61},
+"questiondown":{"x":391,"y":1069,"w":414,"h":52,"offX":0,"offY":0,"sourceW":414,"sourceH":52},
+"questiontop":{"x":391,"y":1013,"w":414,"h":52,"offX":0,"offY":0,"sourceW":414,"sourceH":52},
+"search":{"x":644,"y":0,"w":250,"h":76,"offX":0,"offY":0,"sourceW":250,"sourceH":76}}}
