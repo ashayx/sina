@@ -1,0 +1,330 @@
+{
+	"groups":[
+	{
+		"keys":"",
+		"name":"preload"
+	}],
+	"resources":[
+	{
+		"name": "buttonSound",
+		"type": "sound",
+		"url": "buttonSound.mp3"
+	},
+	{
+		"name": "yinxiao",
+		"type": "sound",
+		"url": "yinxiao.mp3"
+	},
+	{
+		"name":"loading",
+		"type":"sheet",
+		"url":"assets/loading.json"
+	},
+	{
+		"name": "welcome",
+		"type": "sheet",
+		"url": "assets/welcome.json"
+	},
+	{
+		"name": "p2",
+		"type": "sheet",
+		"url": "assets/p2.json"
+	},
+	{
+		"name": "p3",
+		"type": "sheet",
+		"url": "assets/p3.json"
+	},
+	{
+		"name": "p4",
+		"type": "sheet",
+		"url": "assets/p4.json"
+	},
+	{
+		"name": "p5",
+		"type": "sheet",
+		"url": "assets/p5.json"
+	},
+	{
+		"name": "p6",
+		"type": "sheet",
+		"url": "assets/p6.json"
+	},
+	{
+		"name": "p9",
+		"type": "sheet",
+		"url": "assets/p9.json"
+	},
+	{
+		"name": "question",
+		"type": "sheet",
+		"url": "assets/question.json"
+	},
+	{
+		"name": "end",
+		"type": "sheet",
+		"url": "assets/end.json"
+	},
+	{
+		"name": "rank",
+		"type": "sheet",
+		"url": "assets/rank.json"
+	},
+	{
+		"name": "paihang_json",
+		"type": "sheet",
+		"url": "assets/paihang.json"
+	},
+	{
+		"name": "question_1",
+		"type": "sheet",
+		"url": "assets/question_1.json"
+	},
+	{
+		"name": "font",
+		"type": "font",
+		"url": "assets/font.fnt"
+	},
+	{
+		"name": "font1",
+		"type": "font",
+		"url": "assets/font1.fnt"
+	},
+	{
+		"name": "dtime.m4a",
+		"type": "sound",
+		"url": "assets/dtime.m4a"
+	},
+	{
+		"name": "dtime.m4a",
+		"type": "sound",
+		"url": "assets/dtime.m4a"
+	},
+	
+	{
+		"name": "p2_bg.png",
+		"type": "image",
+		"url": "assets/p2_bg.png"
+	},
+	{
+		"name": "p9_bg",
+		"type": "image",
+		"url": "assets/p9_bg.png"
+	},
+	{
+		"name": "arrow",
+		"type": "image",
+		"url": "assets/arrow.png"
+	},
+	{
+		"name": "man_ske.json",
+		"type": "json",
+		"url": "man_ske.json"
+	},
+	{
+		"name": "man_tex.json",
+		"type": "json",
+		"url": "man_tex.json"
+	},
+	{
+		"name": "man_tex.png",
+		"type": "image",
+		"url": "man_tex.png"
+	},
+	{
+		"name": "woman1_ske.json",
+		"type": "json",
+		"url": "woman1_ske.json"
+	},
+	{
+		"name": "woman1_tex.json",
+		"type": "json",
+		"url": "woman1_tex.json"
+	},
+	{
+		"name": "woman1_tex.png",
+		"type": "image",
+		"url": "woman1_tex.png"
+	},
+	{
+		"name": "woman2_ske.json",
+		"type": "json",
+		"url": "woman2_ske.json"
+	},
+	{
+		"name": "woman2_tex.json",
+		"type": "json",
+		"url": "woman2_tex.json"
+	},
+	{
+		"name": "woman2_tex.png",
+		"type": "image",
+		"url": "woman2_tex.png"
+	},
+	{
+		"name": "man1_ske.json",
+		"type": "json",
+		"url": "man1_ske.json"
+	},
+	{
+		"name": "man1_tex.json",
+		"type": "json",
+		"url": "man1_tex.json"
+	},
+	{
+		"name": "man1_tex.png",
+		"type": "image",
+		"url": "man1_tex.png"
+	},
+	{
+		"name": "man2_ske.json",
+		"type": "json",
+		"url": "man2_ske.json"
+	},
+	{
+		"name": "man2_tex.json",
+		"type": "json",
+		"url": "man2_tex.json"
+	},
+	{
+		"name": "man2_tex.png",
+		"type": "image",
+		"url": "man2_tex.png"
+	},
+	{
+		"name": "man3_ske.json",
+		"type": "json",
+		"url": "man3_ske.json"
+	},
+	{
+		"name": "man3_tex.json",
+		"type": "json",
+		"url": "man3_tex.json"
+	},
+	{
+		"name": "man3_tex.png",
+		"type": "image",
+		"url": "man3_tex.png"
+	},
+	{
+		"name": "man4_ske.json",
+		"type": "json",
+		"url": "man4_ske.json"
+	},
+	{
+		"name": "man4_tex.json",
+		"type": "json",
+		"url": "man4_tex.json"
+	},
+	{
+		"name": "man4_tex.png",
+		"type": "image",
+		"url": "man4_tex.png"
+	},
+	{
+		"name": "whitebg",
+		"type": "image",
+		"url": "assets/whitebg.png"
+	},
+	{
+		"name": "youbk_png",
+		"type": "image",
+		"url": "assets/youbk.png"
+	},
+	{
+		"name": "wubk_png",
+		"type": "image",
+		"url": "assets/wubk.png"
+	},
+	{
+		"name": "q1",
+		"type": "sheet",
+		"url": "assets/q1.json"
+	},
+	{
+		"name": "q2",
+		"type": "sheet",
+		"url": "assets/q2.json"
+	},
+	{
+		"name": "q3",
+		"type": "sheet",
+		"url": "assets/q3.json"
+	},
+	{
+		"name": "q4",
+		"type": "sheet",
+		"url": "assets/q4.json"
+	},
+	{
+		"name": "q5",
+		"type": "sheet",
+		"url": "assets/q5.json"
+	},
+	{
+		"name": "q6",
+		"type": "sheet",
+		"url": "assets/q6.json"
+	},
+	{
+		"name": "q7",
+		"type": "sheet",
+		"url": "assets/q7.json"
+	},
+	{
+		"name": "q8",
+		"type": "sheet",
+		"url": "assets/q8.json"
+	},
+	{
+		"name": "q9",
+		"type": "sheet",
+		"url": "assets/q9.json"
+	},
+	{
+		"name": "q10",
+		"type": "sheet",
+		"url": "assets/q10.json"
+	},
+	{
+		"name": "q11",
+		"type": "sheet",
+		"url": "assets/q11.json"
+	},
+	{
+		"name": "q12",
+		"type": "sheet",
+		"url": "assets/q12.json"
+	},
+	{
+		"name": "q13",
+		"type": "sheet",
+		"url": "assets/q13.json"
+	},
+	{
+		"name": "q14",
+		"type": "sheet",
+		"url": "assets/q14.json"
+	},
+	{
+		"name": "q15",
+		"type": "sheet",
+		"url": "assets/q15.json"
+	},
+	{
+		"name": "q16",
+		"type": "sheet",
+		"url": "assets/q16.json"
+	},
+	{
+		"name": "q17",
+		"type": "sheet",
+		"url": "assets/q17.json"
+	},
+	{
+		"name": "q18",
+		"type": "sheet",
+		"url": "assets/q18.json"
+	}
+	]
+}
